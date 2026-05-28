@@ -15,27 +15,45 @@ export type Project = {
 const projects: Project[] = [
   {
     meta: {
-      slug: 'quant-trading-research',
-      title: 'Quantitative Trading Research',
-      description: 'A backtesting framework for evaluating quantitative trading strategies on public market data.',
+      slug: 'bayesian-financial-forecasting',
+      title: 'Bayesian Neural Networks for Financial Forecasting',
+      description:
+        'Research-oriented implementation of Bayesian Neural Networks for uncertainty-aware prediction on financial time-series data.',
       status: 'in-progress',
-      tags: ['python', 'finance', 'data'],
+      tags: [
+        'python',
+        'pytorch',
+        'bayesian-inference',
+        'machine-learning',
+        'finance',
+        'time-series',
+      ],
       date: '2025-05-01',
     },
     content: `
 ## Overview
 
-Building a backtesting framework for evaluating quantitative trading strategies on public market data (Yahoo Finance). The project covers data ingestion, strategy evaluation, and performance metrics.
+TFG project focused on implementing Bayesian Neural Networks (BNNs) for probabilistic prediction in financial contexts using PyTorch.
+
+The project explores uncertainty-aware forecasting on noisy financial time-series data through variational inference and Monte Carlo-based approximation methods. The objective is not only predictive accuracy, but also reliable uncertainty estimation and calibration.
 
 ## Scope
 
-- **Data handling** — loading, cleaning, and structuring time series market data
-- **Strategy implementation** — baseline strategies including momentum and moving average crossovers
-- **Evaluation** — PnL computation, returns, volatility, and drawdown metrics
+- **Probabilistic modeling** — Bayesian neural network architectures for predictive distributions instead of point estimates
+- **Inference methods** — variational inference and Monte Carlo Dropout for posterior approximation
+- **Financial time-series processing** — preprocessing, feature engineering, normalization, and train-validation-test splitting
+- **Uncertainty evaluation** — confidence intervals, calibration analysis, prediction intervals, and uncertainty decomposition
+- **Model evaluation** — RMSE, MAE, calibration metrics, coverage probability, and robustness under noisy conditions
+
+## Current Focus
+
+- Building baseline Bayesian MLP architectures in PyTorch
+- Implementing stochastic forward passes for uncertainty estimation
+- Evaluating calibration quality on public market datasets
 
 ## Status
 
-In progress. No live trading involved.
+In progress. Research and implementation are ongoing.
     `.trim(),
   },
 ]
