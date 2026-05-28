@@ -1,5 +1,4 @@
 import { getProject, getAllProjects } from '@/lib/projects'
-import { MDXRemote } from 'next-mdx-remote/rsc'
 import { Badge } from '@/components/ui/badge'
 import Link from 'next/link'
 
@@ -25,9 +24,23 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           {meta.tags.map((t) => <Badge key={t} variant="muted">{t}</Badge>)}
         </div>
       )}
-      <article className="prose prose-invert prose-sm max-w-none prose-neutral">
-        <MDXRemote source={content} />
-      </article>
+      <article
+        className="prose prose-invert prose-sm max-w-none prose-neutral"
+        dangerouslySetInnerHTML={{ __html: renderMarkdown(content) }}
+      />
     </main>
   )
+}
+
+function renderMarkdown(md: string): string {
+  return md
+    .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/^- (.+)$/gm, '<li>$1</li>')
+    .replace(/(<li>.*<\/li>\n?)+/g, '<ul>$&</ul>')
+    .replace(/\n\n/g, '</p><p>')
+    .replace(/^(?!<[hul])/gm, '')
+    .replace(/(<\/h[23]>|<\/ul>)\s*<\/p><p>/g, '$1')
+    .trim()
 }

@@ -13,8 +13,6 @@
     "next": "^15.3.2",
     "react": "^19",
     "react-dom": "^19",
-    "next-mdx-remote": "^5.0.0",
-    "gray-matter": "^4.0.3",
     "clsx": "^2.1.1",
     "tailwind-merge": "^2.3.0"
   },
