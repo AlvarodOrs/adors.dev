@@ -1,0 +1,19 @@
+import type { Config } from 'tailwindcss'
+
+const config: Config = {
+  content: [
+    './app/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './content/**/*.mdx',
+  ],
+  theme: {
+    extend: {
+      fontFamily: {
+        mono: ['var(--font-mono)', 'monospace'],
+      },
+    },
+  },
+  plugins: [require('@tailwindcss/typography')],
+}
+
+export default config

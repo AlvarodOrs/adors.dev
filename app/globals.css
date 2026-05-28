@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+@layer base {
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-neutral-950 text-neutral-200 antialiased;
+    font-family: var(--font-mono);
+  }
+  ::selection { @apply bg-neutral-700 text-white; }
+}
