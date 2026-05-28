@@ -18,7 +18,13 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         <h1 className="text-2xl font-normal text-neutral-100">{meta.title}</h1>
         <Badge variant={meta.status === 'in-progress' ? 'warning' : 'muted'}>{meta.status}</Badge>
       </div>
-      <p className="text-neutral-500 text-sm mb-8">{meta.description}</p>
+      <p className="text-neutral-500 text-sm mb-4">{meta.description}</p>
+      {meta.repo && (
+        <a href={meta.repo} target="_blank" rel="noopener noreferrer"
+          className="text-neutral-500 hover:text-neutral-200 text-sm transition-colors inline-block mb-8">
+          github ↗
+        </a>
+      )}
       {meta.tags.length > 0 && (
         <div className="flex gap-2 mb-10 flex-wrap">
           {meta.tags.map((t) => <Badge key={t} variant="muted">{t}</Badge>)}

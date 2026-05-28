@@ -5,6 +5,7 @@ export type ProjectMeta = {
   status: 'in-progress' | 'complete'
   tags: string[]
   date: string
+  repo?: string
 }
 
 export type Project = {
@@ -29,6 +30,7 @@ const projects: Project[] = [
         'time-series',
       ],
       date: '2025-05-01',
+      repo: 'https://github.com/AlvarodOrs/Suriel',
     },
     content: `
 ## Overview
