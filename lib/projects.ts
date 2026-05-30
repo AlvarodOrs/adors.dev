@@ -1,8 +1,13 @@
+import fs from 'fs'
+import path from 'path'
+import matter from 'gray-matter'
+
 export type ProjectMeta = {
   slug: string
   title: string
   description: string
   status: 'in-progress' | 'complete'
+  category: 'finance' | 'engineering' | 'utils'
   tags: string[]
   date: string
   repo?: string
@@ -13,61 +18,43 @@ export type Project = {
   content: string
 }
 
-const projects: Project[] = [
-  {
+const CONTENT_DIR = path.join(process.cwd(), 'content/projects')
+
+function parseProject(filename: string): Project {
+  const slug = filename.replace(/\.mdx$/, '')
+  const filePath = path.join(CONTENT_DIR, filename)
+  const raw = fs.readFileSync(filePath, 'utf-8')
+  const { data, content } = matter(raw)
+
+  return {
     meta: {
-      slug: 'bayesian-financial-forecasting',
-      title: 'Bayesian Neural Networks for Financial Forecasting',
-      description:
-        'Research-oriented implementation of Bayesian Neural Networks for uncertainty-aware prediction on financial time-series data.',
-      status: 'in-progress',
-      tags: [
-        'python',
-        'pytorch',
-        'bayesian-inference',
-        'machine-learning',
-        'finance',
-        'time-series',
-      ],
-      date: '2025-05-01',
-      repo: 'https://github.com/AlvarodOrs/Suriel',
+      slug,
+      title: data.title,
+      description: data.description,
+      status: data.status,
+      category: data.category,
+      tags: data.tags ?? [],
+      date: data.date,
+      repo: data.repo,
     },
-    content: `
-## Overview
+    content: content.trim(),
+  }
+}
 
-TFG project focused on implementing Bayesian Neural Networks (BNNs) for probabilistic prediction in financial contexts using PyTorch.
-
-The project explores uncertainty-aware forecasting on noisy financial time-series data through variational inference and Monte Carlo-based approximation methods. The objective is not only predictive accuracy, but also reliable uncertainty estimation and calibration.
-
-## Scope
-
-- **Probabilistic modeling** — Bayesian neural network architectures for predictive distributions instead of point estimates
-- **Inference methods** — variational inference and Monte Carlo Dropout for posterior approximation
-- **Financial time-series processing** — preprocessing, feature engineering, normalization, and train-validation-test splitting
-- **Uncertainty evaluation** — confidence intervals, calibration analysis, prediction intervals, and uncertainty decomposition
-- **Model evaluation** — RMSE, MAE, calibration metrics, coverage probability, and robustness under noisy conditions
-
-## Current Focus
-
-- Building baseline Bayesian MLP architectures in PyTorch
-- Implementing stochastic forward passes for uncertainty estimation
-- Evaluating calibration quality on public market datasets
-
-## Status
-
-In progress. Research and implementation are ongoing.
-    `.trim(),
-  },
-]
+function getAllProjectFiles(): string[] {
+  if (!fs.existsSync(CONTENT_DIR)) return []
+  return fs.readdirSync(CONTENT_DIR).filter((f) => f.endsWith('.mdx'))
+}
 
 export function getAllProjects(): ProjectMeta[] {
-  return projects
-    .map((p) => p.meta)
+  return getAllProjectFiles()
+    .map((filename) => parseProject(filename).meta)
     .sort((a, b) => (a.date < b.date ? 1 : -1))
 }
 
 export function getProject(slug: string): Project {
-  const project = projects.find((p) => p.meta.slug === slug)
-  if (!project) throw new Error(`Project not found: ${slug}`)
-  return project
+  const filename = `${slug}.mdx`
+  const filePath = path.join(CONTENT_DIR, filename)
+  if (!fs.existsSync(filePath)) throw new Error(`Project not found: ${slug}`)
+  return parseProject(filename)
 }
