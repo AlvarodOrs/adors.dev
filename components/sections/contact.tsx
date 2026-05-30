@@ -8,7 +8,7 @@ export function Contact() {
         </a>
         <a href="https://social.adors.dev/linkedin" target="_blank" rel="noopener noreferrer"
           className="hover:text-neutral-200 transition-colors">
-          linkedin.com/in/alvaro-dors ↗
+          linkedin.com/in/me ↗
         </a>
       </div>
     </section>
