@@ -1,15 +1,20 @@
 import { SocialProfile } from "./types";
 
-export async function getGitHubProfile(id: number): Promise<SocialProfile> {
-  const res = await fetch(`https://api.github.com/user/${id}`);
+export async function getGitHubProfile(id: number) {
+  const res = await fetch(`https://api.github.com/user/${id}`, {
+    headers: {
+      "User-Agent": "adors-dev",
+      "Accept": "application/vnd.github+json",
+    },
+  });
 
-  console.log("STATUS:", res.status);
-  console.log("HEADERS:", Object.fromEntries(res.headers));
+  const text = await res.text();
+
   if (!res.ok) {
-    throw new Error("Failed to fetch GitHub profile");
+    throw new Error(`GitHub ${res.status}: ${text}`);
   }
 
-  const data = await res.json();
+  const data = JSON.parse(text);
 
   return {
     platform: "github",
@@ -17,7 +22,7 @@ export async function getGitHubProfile(id: number): Promise<SocialProfile> {
     url: data.html_url,
     avatar: data.avatar_url,
     bio: data.bio,
-  } as SocialProfile;
+  };
 }
 
 export async function getInstagramProfile(id: number): Promise<SocialProfile> {
