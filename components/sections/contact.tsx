@@ -6,7 +6,7 @@ export function Contact() {
         <a href="mailto:a.dors.nestares@gmail.com" className="hover:text-neutral-200 transition-colors">
           a.dors.nestares@gmail.com
         </a>
-        <a href="https://linkedin.adors.dev" target="_blank" rel="noopener noreferrer"
+        <a href="https://social.adors.dev/linkedin" target="_blank" rel="noopener noreferrer"
           className="hover:text-neutral-200 transition-colors">
           linkedin.com/in/alvaro-dors ↗
         </a>

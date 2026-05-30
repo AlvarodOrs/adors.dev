@@ -9,11 +9,11 @@ export function Hero() {
         Computer Engineering Student · UNIR
       </p>
       <div className="flex gap-4 text-sm">
-        <a href="https://github.adors.dev" target="_blank" rel="noopener noreferrer"
+        <a href="https://social.adors.dev/github/" target="_blank" rel="noopener noreferrer"
           className="text-neutral-500 hover:text-neutral-200 transition-colors">
           github ↗
         </a>
-        <a href="https://linkedin.adors.dev" target="_blank" rel="noopener noreferrer"
+        <a href="https://social.adors.dev/linkedin" target="_blank" rel="noopener noreferrer"
           className="text-neutral-500 hover:text-neutral-200 transition-colors">
           linkedin ↗
         </a>
