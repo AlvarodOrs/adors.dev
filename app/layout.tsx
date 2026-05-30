@@ -5,7 +5,7 @@ import './globals.css'
 const mono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono' })
 
 export const metadata: Metadata = {
-  title: "Álvaro d'Ors — adors.dev",
+  title: "Álvaro d'Ors",
   description: 'Computer Engineering Student · UNIR',
   metadataBase: new URL('https://adors.dev'),
   openGraph: {
@@ -14,6 +14,9 @@ export const metadata: Metadata = {
     url: 'https://adors.dev',
     siteName: 'adors.dev',
     images: [{ url: '/og.png', width: 1200, height: 630 }],
+  },
+  icons: {
+    icon: '/icon.ico'
   },
 }
 

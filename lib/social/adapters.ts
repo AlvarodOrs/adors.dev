@@ -25,21 +25,29 @@ export async function getGitHubProfile(id: number) {
   };
 }
 
-export async function getInstagramProfile(id: number): Promise<SocialProfile> {
-  // const res = await fetch(`https://api.instagram.com/user/${id}`);
+export async function getInstagramProfile(id: number) {
+  // const res = await fetch(`https://api.instagram.com/user/${id}`, {
+  //   headers: {
+  //     "User-Agent": "adors-dev",
+  //     "Accept": "application/vnd.instagram+json",
+  //   },
+  // });
+
+  // const text = await res.text();
 
   // if (!res.ok) {
-  //   throw new Error("Failed to fetch Instagram profile");
+  //   throw new Error(`Instagram ${res.status}: ${text}`);
   // }
 
-  // const data = await res.json();
+  // const data = JSON.parse(text);
+
   // return {
   //   platform: "instagram",
   //   username: data.username,
   //   url: data.url,
   //   avatar: data.avatar_url,
   //   bio: data.bio,
-  // } as SocialProfile;
+  // };
   const username = "alvaro.dors";
   const data = {
     username: username,
@@ -50,24 +58,32 @@ export async function getInstagramProfile(id: number): Promise<SocialProfile> {
     platform: "instagram",
     username: data.username,
     url: data.url,
-  } as SocialProfile;
+  };
 }
 
-export async function getLinkedInProfile(id: number): Promise<SocialProfile> {
-  // const res = await fetch(`https://api.instagram.com/user/${id}`);
+export async function getLinkedInProfile(id: number) {
+  // const res = await fetch(`https://api.linkedin.com/user/${id}`, {
+  //   headers: {
+  //     "User-Agent": "adors-dev",
+  //     "Accept": "application/vnd.linkedin+json",
+  //   },
+  // });
+
+  // const text = await res.text();
 
   // if (!res.ok) {
-  //   throw new Error("Failed to fetch Instagram profile");
+  //   throw new Error(`LinkedIn ${res.status}: ${text}`);
   // }
 
-  // const data = await res.json();
+  // const data = JSON.parse(text);
+
   // return {
-  //   platform: "instagram",
+  //   platform: "linkedin",
   //   username: data.username,
   //   url: data.url,
   //   avatar: data.avatar_url,
   //   bio: data.bio,
-  // } as SocialProfile;
+  // };
   const username = "alvaro-dors";
   const data = {
     username: username,
