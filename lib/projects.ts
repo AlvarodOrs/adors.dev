@@ -42,8 +42,12 @@ function parseProject(filename: string): Project {
 }
 
 function getAllProjectFiles(): string[] {
+  console.log('CONTENT_DIR:', CONTENT_DIR)
+  console.log('EXISTS:', fs.existsSync(CONTENT_DIR))
   if (!fs.existsSync(CONTENT_DIR)) return []
-  return fs.readdirSync(CONTENT_DIR).filter((f) => f.endsWith('.mdx'))
+  const files = fs.readdirSync(CONTENT_DIR).filter((f) => f.endsWith('.mdx'))
+  console.log('FILES:', files)
+  return files
 }
 
 export function getAllProjects(): ProjectMeta[] {
