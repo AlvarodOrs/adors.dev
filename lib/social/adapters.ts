@@ -3,6 +3,8 @@ import { SocialProfile } from "./types";
 export async function getGitHubProfile(id: number): Promise<SocialProfile> {
   const res = await fetch(`https://api.github.com/user/${id}`);
 
+  console.log("STATUS:", res.status);
+  console.log("HEADERS:", Object.fromEntries(res.headers));
   if (!res.ok) {
     throw new Error("Failed to fetch GitHub profile");
   }
