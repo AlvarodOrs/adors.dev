@@ -2,6 +2,8 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 
+const CONTENT_DIR = path.join(process.cwd(), 'content/projects')
+
 export type ProjectMeta = {
   slug: string
   title: string
@@ -17,8 +19,6 @@ export type Project = {
   meta: ProjectMeta
   content: string
 }
-
-const CONTENT_DIR = path.join(process.cwd(), 'content/projects')
 
 function parseProject(filename: string): Project {
   const slug = filename.replace(/\.mdx$/, '')

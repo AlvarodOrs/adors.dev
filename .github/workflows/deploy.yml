@@ -16,12 +16,10 @@ jobs:
           node-version: 22
           cache: npm
 
-      # Next.js build cache (THIS is the important one)
       - uses: actions/cache@v4
         with:
-          path: |
-            .next/cache
-          key: ${{ runner.os }}-next-${{ hashFiles('**/*.{js,ts,tsx,json}') }}
+          path: .next/cache
+          key: ${{ runner.os }}-next-${{ hashFiles('content/projects/**') }}-${{ hashFiles('**/*.{js,ts,tsx,json}') }}
           restore-keys: |
             ${{ runner.os }}-next-
 
