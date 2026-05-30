@@ -1,7 +1,5 @@
-import type { NextConfig } from 'next'
-
-const nextConfig: NextConfig = {
-  // Required for Cloudflare Pages
+const nextConfig = {
+  output: 'export',
 }
 
 export default nextConfig
