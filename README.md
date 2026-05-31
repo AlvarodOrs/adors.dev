@@ -32,7 +32,7 @@ Create a new `.mdx` file in `content/projects/`:
 ---
 title: "Project Name"
 description: "One line description."
-status: "in-progress"   # or "complete"
+status: "in-progress"   # or "live"
 tags: ["python", "finance"]
 date: "2025-06-01"
 ---

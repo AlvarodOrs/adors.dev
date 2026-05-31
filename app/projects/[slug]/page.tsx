@@ -1,4 +1,5 @@
 import { getProject, getAllProjects } from '@/lib/projects'
+import { statusVariant } from '@/lib/status'
 import { Badge } from '@/components/ui/badge'
 import Link from 'next/link'
 
@@ -16,7 +17,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       </Link>
       <div className="flex items-center gap-3 mb-3">
         <h1 className="text-2xl font-normal text-neutral-100">{meta.title}</h1>
-        <Badge variant={meta.status === 'in-progress' ? 'warning' : 'muted'}>{meta.status}</Badge>
+        <Badge variant={statusVariant[meta.status]}>
+          {meta.status}
+        </Badge>
       </div>
       <p className="text-neutral-500 text-sm mb-4">{meta.description}</p>
       {meta.repo && (

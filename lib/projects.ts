@@ -8,7 +8,7 @@ export type ProjectMeta = {
   slug: string
   title: string
   description: string
-  status: 'in-progress' | 'complete'
+  status: 'planned' | 'in-progress' | 'completed' | 'live'
   category: 'finance' | 'engineering' | 'utils'
   tags: string[]
   date: string

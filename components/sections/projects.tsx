@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import type { ProjectMeta } from '@/lib/projects'
+import { statusVariant } from '@/lib/status'
 
 const TABS = ['finance', 'engineering', 'utils'] as const
 type Tab = typeof TABS[number]
@@ -46,7 +47,7 @@ export function Projects({ projects }: { projects: ProjectMeta[] }) {
                   <p className="text-neutral-200 text-sm mb-1">{p.title}</p>
                   <p className="text-neutral-500 text-xs leading-relaxed">{p.description}</p>
                 </div>
-                <Badge variant={p.status === 'in-progress' ? 'warning' : 'muted'}>
+                <Badge variant={statusVariant[p.status]}>
                   {p.status}
                 </Badge>
               </div>
