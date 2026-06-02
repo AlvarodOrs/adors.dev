@@ -7,7 +7,7 @@ import { Badge } from '@/components/ui/badge'
 import type { ProjectMeta } from '@/lib/projects'
 import { statusVariant } from '@/lib/status'
 
-const TABS = ['finance', 'engineering', 'utils'] as const
+const TABS = ['finance', 'engineering', 'utils', 'website'] as const
 type Tab = typeof TABS[number]
 
 export function Projects({ projects }: { projects: ProjectMeta[] }) {

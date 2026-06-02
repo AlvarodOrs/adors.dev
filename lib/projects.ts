@@ -9,7 +9,7 @@ export type ProjectMeta = {
   title: string
   description: string
   status: 'planned' | 'in-progress' | 'completed' | 'live'
-  category: 'finance' | 'engineering' | 'utils'
+  category: 'finance' | 'engineering' | 'utils' | 'website' | 'other'
   tags: string[]
   date: string
   repo?: string
