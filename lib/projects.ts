@@ -12,6 +12,7 @@ export type ProjectMeta = {
   category: 'finance' | 'engineering' | 'utils' | 'website' | 'other'
   tags: string[]
   date: string
+  updated: string
   repo?: string
 }
 
@@ -35,6 +36,7 @@ function parseProject(filename: string): Project {
       category: data.category,
       tags: data.tags ?? [],
       date: data.date,
+      updated: data.updated,
       repo: data.repo,
     },
     content: content.trim(),
