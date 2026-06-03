@@ -17,7 +17,7 @@ export function Hero() {
           className="text-neutral-500 hover:text-neutral-200 transition-colors">
           linkedin ↗
         </a>
-        <a href="mailto:a.dors.nestares@gmail.com"
+        <a href="mailto:contact@adors.dev"
           className="text-neutral-500 hover:text-neutral-200 transition-colors">
           email ↗
         </a>
